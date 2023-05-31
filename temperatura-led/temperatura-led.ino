@@ -70,14 +70,13 @@ void setup() {
       Serial.print("falha estado  ");
       Serial.print(client.state());
       #endif
-      delay(2000);
- 
+      delay(2000); 
     }
   }
 
   //subscreve no tópico
   client.subscribe(mqttTopicSub);
-  //dht.begin(); 
+  dht.begin(); 
 }
  
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -143,7 +142,7 @@ void loop() {
   //envia a cada X segundos
   if ((millis() - ultimoEnvioMQTT) > INTERVALO_ENVIO)
   {
-      //enviaDHT();
+      enviaDHT();
       ultimoEnvioMQTT = millis();
   }
   
